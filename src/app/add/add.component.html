@@ -1,13 +1,10 @@
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
   
-    <label>
-      Title:
-      <input type="text" formControlName="title">
-    </label>
+    <label class="label">Title</label>
+    <input class="input" type="text" formControlName="title">
   
-    <label>
-      Description:
-      <input type="text" formControlName="description">
-    </label>
-    <button type="submit" [disabled]="!postForm.valid">Add post</button>
-  </form>
+    <label class="label">Desctiption</label>
+    <input class="input" type="text" formControlName="description">
+
+    <button class="button is primary" type="submit" [disabled]="!postForm.valid">Add post</button>
+</form>

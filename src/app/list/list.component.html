@@ -1,8 +1,12 @@
 <!-- Afficher avec une boucle *ngFor une liste de composant Post (PostComponent) -->
-<h1 class="title">Affichage des posts crées dans le mock.ts avec une boucle ngFor</h1>
 
-<app-add></app-add>
-
-<li *ngFor="let p of posts;">
-    <app-post [post]="p"></app-post>
-</li>
+<div class="container">
+    <div class="notification">
+        <h1 class="title has-text-centered">Socialy</h1>
+        <app-add></app-add>
+        <br>
+        <div class="colums is-multiline">
+            <app-post [post]="p" *ngFor="let p of posts" class="column"></app-post>
+        </div>
+    </div>
+</div>

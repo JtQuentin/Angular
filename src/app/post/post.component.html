@@ -1,11 +1,13 @@
 <div class="card">
-<div class="card-header">
-    <p class="card-header-title">{{ post.title }}</p>
-</div>
-<div class="card-content">
-    <div class="content">
-        <p>{{ post.description }}</p>
-        <p>{{ post.link }}</p>
+    <header class="card-header">
+        <p class="card-header-title title is-4">{{ post.title }}</p>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            <p>{{ post.description }}</p>                
+        </div>
     </div>
-</div>
+    <footer class="card-footer">
+        <a href="{{ post.link }}" class="card-footer-item">{{ post.link }}</a>
+    </footer>
 </div>

@@ -11,6 +11,7 @@ export class AddComponent implements OnInit {
   postForm = new FormGroup({
     title: new FormControl(''),
     description: new FormControl(''),
+    link: new FormControl(''),
   });
 
   onSubmit(){

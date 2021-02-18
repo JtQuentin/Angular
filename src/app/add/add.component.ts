@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Output, EventEmitter } from '@angular/core';
+import { Post } from '../@shared/models/post';
 
 @Component({
   selector: 'app-add',
@@ -14,12 +16,14 @@ export class AddComponent implements OnInit {
     link: new FormControl(''),
   });
 
+  @Output() addPostEvent = new EventEmitter<Post>();
+
   onSubmit(){
     console.log(this.postForm.value);
   }
 
-  submitPost(){
-    console.log(this.postForm.value);
+  addNewPost(value: Post){
+    this.addPostEvent.emit(value);
   }
 
   constructor() { }

@@ -13,6 +13,12 @@ export class PostComponent implements OnInit, OnDestroy {
 
   @Input() post : Post;
 
+  posts = [];
+
+  addPost(newPost: Post){
+    this.posts.push(newPost);
+  }
+
   constructor() {}
 
   ngOnInit(): void {

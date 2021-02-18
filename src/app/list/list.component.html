@@ -6,7 +6,7 @@
         <app-add></app-add>
         <br>
         <div class="colums is-multiline">
-            <app-post [post]="p" *ngFor="let p of posts" class="column"></app-post>
+            <app-post [post]="p" *ngFor="let p of posts" class="column" (newPostEvent)="addPost($event)"></app-post>
         </div>
     </div>
 </div>

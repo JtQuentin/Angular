@@ -1,0 +1,9 @@
+<!-- Afficher avec une boucle *ngFor une liste de composant Post (PostComponent) -->
+<h1>Affichage des posts crées dans le mock.ts avec une boucle ngFor</h1>
+
+<ul>
+    <li *ngFor="let p of posts;">
+        <app-post [post]="p"></app-post>
+    </li>
+</ul>
+

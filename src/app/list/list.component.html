@@ -3,10 +3,10 @@
 <div class="container">
     <div class="notification">
         <h1 class="title has-text-centered">Socialy</h1>
-        <app-add></app-add>
+        <app-add (addPostEvent)="addPost($event)"></app-add>
         <br>
-        <div class="colums is-multiline">
-            <app-post [post]="p" *ngFor="let p of posts" class="column" (newPostEvent)="addPost($event)"></app-post>
+        <div class="colums">
+            <app-post [post]="p" *ngFor="let p of posts" class="column"></app-post>
         </div>
     </div>
 </div>

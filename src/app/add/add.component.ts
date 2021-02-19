@@ -10,20 +10,16 @@ import { Post } from '../@shared/models/post';
 })
 export class AddComponent implements OnInit {
 
+  @Output() addPostEvent = new EventEmitter<Post>();
+
   postForm = new FormGroup({
     title: new FormControl(''),
     description: new FormControl(''),
     link: new FormControl(''),
   });
 
-  @Output() addPostEvent = new EventEmitter<Post>();
-
-  onSubmit(){
-    console.log(this.postForm.value);
-  }
-
-  addNewPost(value: Post){
-    this.addPostEvent.emit(value);
+  addNewPost(){
+    this.addPostEvent.emit(this.postForm.value);
   }
 
   constructor() { }

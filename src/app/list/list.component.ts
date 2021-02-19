@@ -12,6 +12,10 @@ export class ListComponent implements OnInit {
 
   posts: Post[] = POSTS;
 
+  addPost(newPost: Post){
+    this.posts.push(newPost);
+  }
+
   constructor() { }
 
   ngOnInit(): void {

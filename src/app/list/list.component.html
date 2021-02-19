@@ -4,8 +4,8 @@
     <div class="notification">
         <h1 class="title has-text-centered">Socialy</h1>
         <app-add (addPostEvent)="addPost($event)"></app-add>
-        <br>
-        <div class="colums">
+        
+        <div class="column">
             <app-post [post]="p" *ngFor="let p of posts" class="column"></app-post>
         </div>
     </div>

@@ -4,7 +4,7 @@
         <label class="label">Titre</label>
         <input class="input" type="text" placeholder="Titre du post" formControlName="title">
     </div>
-    
+
     <div class="field">
         <label class="label">Description</label>
         <input class="input" type="text" placeholder="Description du post" formControlName="description">
@@ -13,22 +13,22 @@
     <div class="field-is-horizontal">
         <label class="label">Lien</label>
         <div class="field-body">
-            <!-- <div class="field has-addons">
+            <div class="field has-addons">
                 <p class="control">
-                  <a class="button is-static">
-                    https://
-                  </a>
-                </p> -->
-                
-                <input class="input" type="text" placeholder="Lien du post" formControlName="link">
-               
-            <!-- </div> -->
+                    <a class="button is-static">
+                        https://
+                    </a>
+                </p>
+
+                <input class="input" type="url" placeholder="Lien du post" formControlName="link">
+
+            </div>
         </div>
     </div>
 
     <div class="control">
-        <label class="label"></label>  
-        <button class="button is primary" type="submit">Add post</button>
+        <label class="label"></label>
+        <button class="button is primary" type="submit" [disabled]="postForm.invalid">Add post</button>
     </div>
-    
+
 </form>

@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   posts: Post[] = POSTS;
 
   addPost(newPost: Post){
-    this.posts.push(newPost);
+    this.posts.unshift(newPost);
   }
 
   constructor() { }

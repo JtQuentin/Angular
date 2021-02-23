@@ -1,4 +1,4 @@
-<form [formGroup]="postForm" (ngSubmit)="addNewPost()">
+<form [formGroup]="postForm" (ngSubmit)="createPost(postForm.value)">
 
     <div class="field">
         <label class="label">Titre</label>

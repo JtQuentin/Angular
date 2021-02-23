@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
 import { Post } from '../@shared/models/post';
 import { IdGeneratorUtils } from '../@shared/utils/id-generator.utils';
+import { PostServiceService } from '../@shared/service/post-service.service';
 
 @Component({
   selector: 'app-add',
@@ -19,8 +20,9 @@ export class AddComponent implements OnInit {
     link: new FormControl('', Validators.required),
   });
 
-  createPost() {
-    
+  createPost(newPost: Post) {
+    this.postService.addPost(newPost).subscribe(post => this.addPostEvent.emit(newPost));
+    this.postForm.reset();
   }
 
   addNewPost(){
@@ -35,7 +37,7 @@ export class AddComponent implements OnInit {
     this.postForm.reset();
   }
 
-  constructor() { }
+  constructor(private postService: PostServiceService) { }
 
   ngOnInit(): void {
   }

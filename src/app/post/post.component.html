@@ -8,6 +8,8 @@
         </div>
     </div>
     <footer class="card-footer">
-        <a href="{{ post.link }}" class="card-footer-item">{{ post.link }}</a>
+        <a href="{{ post.link }}" class="card-footer-item">Ouvrir</a>
+        <button class="button is-info card-footer-item" (click)="editPost()">Éditer</button>
+        <button class="button is-danger card-footer-item" (click)="deletePost()">Supprimer</button>
     </footer>
 </div>

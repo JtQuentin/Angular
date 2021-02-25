@@ -3,24 +3,30 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post';
 import { Observable } from 'rxjs';
 
-  const postUrl = 'https://crudcrud.com/api/1d42ca9ec8fa40199014c5022cd444ce/posts';
+const postUrl = 'https://crudcrud.com/api/12cd2803b03a4c57b711553ce445c3fb/posts';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostServiceService {
 
-  
-
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<any>{
-    return this.http.get<Post>(postUrl);
+  getPosts() {
+    return this.http.get<Post[]>(postUrl);
   }
 
-  addPost(post: Post): Observable<Post> {
+  addPost(post: Post) {
     return this.http.post<Post>(postUrl, post);
   }
 
-  
+  deletePost(postId: string) {
+    return this.http.delete(postUrl + `/${postId}`);
+  }
+
+  editPost(postId: string, postEdited: Post) {
+    delete postEdited._id;
+    return this.http.put(postUrl + `/${postId}`, postEdited);
+  }
+
 }

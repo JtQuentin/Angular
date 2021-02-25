@@ -12,34 +12,41 @@ import { PostServiceService } from '../@shared/service/post-service.service';
 })
 export class AddComponent implements OnInit {
 
-  @Output() addPostEvent = new EventEmitter<Post>();
-
-  postForm = new FormGroup({
-    title: new FormControl('', Validators.required),
-    description: new FormControl(''),
-    link: new FormControl('', Validators.required),
-  });
-
-  createPost(newPost: Post) {
-    this.postService.addPost(newPost).subscribe(post => this.addPostEvent.emit(newPost));
-    this.postForm.reset();
+  @Input("postEditing") set postEditing(post: Post) {
+    this.postForm.setValue({title: post.title, description: post.description, link: post.link})
   }
 
-  addNewPost(){
+  @Output() addPostEvent: EventEmitter<Post>;
+  @Output() crudEditEvent: EventEmitter<Post>;
+
+  postForm: FormGroup;
+
+  constructor(private postService: PostServiceService) {
+    this.addPostEvent = new EventEmitter();
+    this.crudEditEvent = new EventEmitter();
+    this.createForm();
+  }
+
+  ngOnInit(): void {
+  }
+
+  addNewPost() {
     const post: Post = {
-      id: IdGeneratorUtils.uuidv4(),
       title: this.postForm.get("title").value,
       description: this.postForm.get("description").value,
       link: this.postForm.get("link").value
     }
 
     this.addPostEvent.emit(post);
+    this.crudEditEvent.emit(post);
     this.postForm.reset();
   }
 
-  constructor(private postService: PostServiceService) { }
-
-  ngOnInit(): void {
+  private createForm() {
+    this.postForm = new FormGroup({
+      title: new FormControl('', Validators.required),
+      description: new FormControl(''),
+      link: new FormControl('', Validators.required),
+    });
   }
-
 }

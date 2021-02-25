@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { PropertyWrite } from '@angular/compiler';
+import { Component, Input, OnInit, EventEmitter } from '@angular/core';
 
 import { POSTS } from '../@shared/mock';
 import { Post } from '../@shared/models/post';
@@ -12,24 +13,36 @@ import { PostServiceService } from '../@shared/service/post-service.service';
 export class ListComponent implements OnInit {
 
   posts: Post[]; // = POSTS;
+  postEditing: Post;
 
   constructor(private postService: PostServiceService) { }
 
-  addPost(newPost: Post){
-    this.posts.unshift(newPost);
+  addPost(post: Post) {
+    this.postService.addPost(post).subscribe(post => this.posts.unshift(post));
   }
 
-  getPosts(){
+  getPosts() {
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts;
     });
   }
 
-  
+  crudEdit(post: Post){
+    this.postService.editPost(post._id,post).subscribe();
+  }
+
+  editPost(post: Post) {
+    // this.postService.editPost(post._id,post).subscribe();
+    this.postEditing = post;
+  }
+
+  deletePost(post: Post) {
+    this.postService.deletePost(post._id).subscribe();
+    this.posts.splice(this.posts.indexOf(post, 0), 1);
+  }
 
   ngOnInit(): void {
     this.getPosts();
     console.log("posts > ", this.posts);
   }
-
 }

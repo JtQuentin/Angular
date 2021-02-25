@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { __importDefault } from 'tslib';
 import { Post } from '../@shared/models/post';
 
@@ -12,8 +12,23 @@ export class PostComponent implements OnInit, OnDestroy {
   collapsed: boolean;
 
   @Input() post : Post;
+  @Output() editPostEvent: EventEmitter<Post>
+  @Output() deletePostEvent: EventEmitter<Post> 
 
-  constructor() {}
+  constructor() {
+    this.editPostEvent = new EventEmitter();
+    this.deletePostEvent = new EventEmitter();
+  }
+
+  editPost(){
+    this.editPostEvent.emit(this.post);
+    console.log("J'appuie sur le bouton éditer")
+  }
+
+  deletePost(){
+    this.deletePostEvent.emit(this.post);
+    console.log("J'appuie sur le bouton supprimer")
+  }
 
   ngOnInit(): void {
 

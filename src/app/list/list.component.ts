@@ -48,8 +48,10 @@ export class ListComponent implements OnInit {
   }
 
   deletePost(post: Post) {
-    this.postService.deletePost(post._id).subscribe();
+    this.postService.deletePost(post._id).subscribe(res => {
     this.posts.splice(this.posts.indexOf(post, 0), 1);
+    });
+    
   }
 
   ngOnInit(): void {

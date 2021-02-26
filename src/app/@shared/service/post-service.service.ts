@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post';
 import { Observable } from 'rxjs';
 
-const postUrl = 'https://crudcrud.com/api/12cd2803b03a4c57b711553ce445c3fb/posts';
+const postUrl = 'https://crudcrud.com/api/ee51a588488840618ee68d5849846478/posts';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +21,12 @@ export class PostServiceService {
   }
 
   deletePost(postId: string) {
-    return this.http.delete(postUrl + `/${postId}`);
+    return this.http.delete<Post>(postUrl + `/${postId}`);
   }
 
   editPost(postId: string, postEdited: Post) {
     delete postEdited._id;
-    return this.http.put(postUrl + `/${postId}`, postEdited);
+    return this.http.put<Post>(postUrl + `/${postId}`, postEdited);
   }
 
 }

@@ -13,7 +13,10 @@ import { PostServiceService } from '../@shared/service/post-service.service';
 export class AddComponent implements OnInit {
 
   @Input("postEditing") set postEditing(post: Post) {
-    this.postForm.setValue({title: post.title, description: post.description, link: post.link})
+    if(!post){
+      return;
+    }
+    this.postForm.patchValue({title: post.title, description: post.description, link: post.link});
   }
 
   @Output() addPostEvent: EventEmitter<Post>;

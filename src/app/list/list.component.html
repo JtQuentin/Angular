@@ -3,7 +3,7 @@
 <div class="container">
     <div class="notification">
         <h1 class="title has-text-centered">Socialy</h1>
-        <app-add (addPostEvent)="addPost($event)" [postEditing]="postEditing"></app-add>
+        <app-add (addPostEvent)="modifPost($event)" (editPostEvent)="modifPost($event)" [postEditing]="postEditing"></app-add>
         
         <div class="column">
             <app-post [post]="p" *ngFor="let p of posts" class="column" (editPostEvent)="editPost($event)" (deletePostEvent)="deletePost($event)"></app-post>

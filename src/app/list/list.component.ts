@@ -27,12 +27,23 @@ export class ListComponent implements OnInit {
     });
   }
 
-  crudEdit(post: Post){
-    this.postService.editPost(post._id,post).subscribe();
+  crudEdit(post: Post) {
+    this.postService.editPost(this.postEditing._id, post).subscribe();
+    this.postEditing = null;
+    
+  }
+
+  modifPost(post: Post) {
+    if (this.postEditing == null) {
+      this.addPost(post);
+    }
+    else {
+      this.crudEdit(post);
+      location.reload();
+    }
   }
 
   editPost(post: Post) {
-    // this.postService.editPost(post._id,post).subscribe();
     this.postEditing = post;
   }
 
